@@ -17,11 +17,10 @@ const App = () => {
   const [largeImageURL, setLargeImageURL] = useState('');
 
   const onSearchSubmit = async (searchText) => {
-    await setPage(1)
     setIsLoading(true)
     setSearchText(searchText)
-    const response = await getImages(searchText, page);
-    setPage(page + 1)
+    const response = await getImages(searchText, 1);
+    setPage(2)
     setGalleryList([...response.data.hits])
     setIsLoading(false)
     setTotalGalleryListCount(response.data.totalHits)
