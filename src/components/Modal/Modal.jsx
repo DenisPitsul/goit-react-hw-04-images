@@ -3,18 +3,18 @@ import classes from "./Modal.module.css"
 
 const Modal = ({largeImage, modalClose}) => {
 
-    const onEscPress = (event) => {
-        if (event.code === "Escape") {
-            modalClose()
-        }
-    }
-
     useEffect(() => {
+        const onEscPress = (event) => {
+            if (event.code === "Escape") {
+                modalClose()
+            }
+        }
+
         document.addEventListener('keyup', onEscPress)
         return () => {
             document.removeEventListener('keyup', onEscPress)
         }
-    }, [])
+    }, [modalClose])
 
     return (
         <div className={classes.Overlay} onClick={() => modalClose()}>
